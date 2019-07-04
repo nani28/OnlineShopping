@@ -1,0 +1,32 @@
+{% extends 'base_visitor.html'%}
+{% block title %}Log In{% endblock %}
+{% block body %}
+
+<!-- Log In-->
+        <div class="col-md-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h1 class="panel-title">Log In</h1></div>
+          <div class="panel-body">
+              {% if error_msg %}
+                <div class="alert alert-danger">{{ error_msg }}</div>
+              {% endif %}
+              <form role="form" action="{% url 'auth_user' %}" method="post">{% csrf_token %}
+                 <div class="form-group">
+                  <input type="text" name="username" class="form-control" placeholder="Username">
+                </div>
+                 <div class="form-group">
+                  <input type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+                <div class="form-group">
+                  <input type="submit" class="btn btn-sm btn-primary" value="Log-in">
+                </div>
+              </form>
+        </div>
+        <div class="panel-footer">
+          Don't have an account?<a href="{% url 'newuser' %}">Click here</a> to register
+        </div>
+        </div>
+      </div>
+
+{% endblock %}
